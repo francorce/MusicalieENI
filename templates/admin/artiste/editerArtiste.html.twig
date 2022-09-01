@@ -1,0 +1,56 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block contenu %}
+    <div class="container">
+
+        <img class="rounded mx-auto d-block" src="{{ asset('formu+artistes.png') }}" alt="Symfony!"/>
+        {{ form_start(formulaireArtiste) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(formulaireArtiste.NomScene) }}
+            </div>
+            <div class="col">
+                {{ form_row(formulaireArtiste.Style) }}
+            </div>
+        </div>
+            <br><br>
+            <h3 class="mt-4">Ajout d'instruments</h3>
+
+            <div class="d-flex travauxBloc"
+                 data-index="{{ formulaireArtiste.instrument|length > 0 ? formulaireArtiste.instrument|last.vars.name + 1 : 0 }}"
+                 data-prototype="{{ form_widget(formulaireArtiste.instrument.vars.prototype)|e('html_attr') }}">
+                {{ form_label(formulaireArtiste.instrument) }}</div>
+            <button type="button" class="add_item_link btn btn-secondary btn-sm mt-3" data-collection-holder-class="travauxBloc">Ajouter un instrument</button>
+
+            <div class="row mt-2">
+
+
+                {% for instrument in formulaireArtiste.instrument %}
+
+                    <div class="col-4">
+                        {{ form_widget(instrument) }}
+                        <button class="btn btn-sm btn-danger" onclick="return this.parentNode.remove()">supprimer</button>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        {{ form_rest(formulaireArtiste) }}
+
+        {% if app.request.get('_route') == 'app_admin_artiste_ajouter' %}
+            <div class="example-wrapper">
+                <button class="btn btn-success rounded mx-auto d-block" type="submit">Ajouter</button>
+            </div>
+        {% else %}
+            <div class="example-wrapper">
+                <button class="btn btn-success rounded mx-auto d-block" type="submit">Modifier</button>
+            </div>
+        {% endif %}
+
+        {{ form_end(formulaireArtiste) }}
+    </div>
+
+
+{% endblock %}

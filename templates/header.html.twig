@@ -1,0 +1,39 @@
+{# Header du projet #}
+
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container">
+        <a class="navbar-brand text-light" href="{{ path('app_festival') }}">Musicalie</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="{{ path('app_festival') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Contact</a>
+                </li>
+            </ul>
+
+                <li class="nav-item dropdown" style="list-style-type: none;">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('app_admin_festival') }}"><button style="margin: 10px;" class="btn btn-outline-success" type="submit">Admin</button></a></li>
+                        <li><a class="dropdown-item" href="#">rien</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">rien 2</a></li>
+                    </ul>
+                </li>
+
+{#            {% if app.user %}#}
+{#                <a href="{{ path('app_logout') }}"<button style="margin: 10px;" class="btn btn-outline-success" type="submit">Déconnexion</button></a>#}
+{#            {% else %}#}
+{#                <a href="{{ path('app_login') }}"<button style="margin: 10px;" class="btn btn-outline-success" type="submit">Connexion</button></a>#}
+{#            {% endif %}#}
+        </div>
+    </div>
+</nav>
+

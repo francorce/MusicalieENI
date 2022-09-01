@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block contenu %}
+    <div class="container">
+
+    <img class="rounded mx-auto d-block" src="{{ asset('formu+festival.png') }}" alt="Symfony!"/>
+        {{ form_start(formulaireFestival) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(formulaireFestival.Nom) }}
+            </div>
+            <div class="col">
+                {{ form_row(formulaireFestival.Lieu) }}
+            </div>
+            <div class="col">
+                {{ form_row(formulaireFestival.photo) }}
+            </div>
+            <div class="col">
+                {{ form_row(formulaireFestival.description) }}
+            </div>
+        </div>
+        <h3 class="mt-4">Artistes présents à ce festival</h3>
+        {{ form_label(formulaireFestival.artiste) }}
+        {{ form_widget(formulaireFestival.artiste) }}
+        <h3 class="mt-4">Dans quel département ?</h3>
+        {{ form_rest(formulaireFestival) }}
+
+
+
+        {% if app.request.get('_route') == 'app_admin_festival_ajouter' %}
+            <div class="example-wrapper">
+                <button class="btn btn-success rounded mx-auto d-block" type="submit">Ajouter</button>
+            </div>
+        {% else %}
+            <div class="example-wrapper">
+                <button class="btn btn-success rounded mx-auto d-block" type="submit">Modifier</button>
+            </div>
+        {% endif %}
+
+        {{ form_end(formulaireFestival) }}
+    </div>
+
+
+{% endblock %}

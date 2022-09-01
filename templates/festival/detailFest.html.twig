@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Festival {% endblock %}
+
+{% block contenu %}
+
+
+    <div class="container">
+
+        <div>
+            <img src="{{ asset('img/') }}{{ festival.photo }}" class="img-thumbnail rounded mx-auto d-block" alt="...">
+            <h5 class="card-title">{{ festival.nom }}</h5>
+            <p>Description : {{ festival.description }}</p>
+            <p>Lieu : {{ festival.lieu }}</p>
+
+            <p>Artistes présents : </p>
+                {% for artiste in festival.artiste %}
+                    <li>{{ artiste.NomScene }}</li>
+                {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Festivals{% endblock %}
+
+
+{% block contenu %}
+
+
+    <section class="dark">
+        <h1 class="h1 text-center" id="pageHeaderTitle">3 Dernier festivals ajoutés</h1>
+        <div class="container py-4">
+
+            <article class="postcard dark blue">
+                <div class="d-flex flex-row flex-nowrap">
+        {% for festival in festivals |slice(0, 3)%}
+
+                    <img class="postcard__img" style="width: 150px; height:273px" src="{{ asset('img/') }}{{ festival.photo }}" alt="Image Title" />
+                    <div class="postcard__text" style="">
+                        <h1 class="postcard__title blue">{{ festival.nom }}</h1>
+                        <div class="postcard__subtitle small">
+
+
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">{{ festival.description }}</div>
+                    </div>
+        {% endfor %}
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <h1 class="h1 text-center" id="pageHeaderTitle">Liste des Départements de Nouvelle-Aquitaine</h1>
+    <ul class="list-group">
+    {% for departement in departements %}
+
+        <a href="{{ path('app_festival_detail', {id:departement.id }) }}"><li class="list-group-item list-group-item-dark">{{ departement.nom }} ({{ departement.numero }})</li></a>
+
+    {% endfor %}
+    </ul>
+
+
+{% endblock %}
+

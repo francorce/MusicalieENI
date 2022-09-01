@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Detail {% endblock %}
+
+
+{% block pageTitre %}
+    <h1>Detail</h1>
+{% endblock %}
+
+{% block contenu %}
+
+    <div class="container">
+        <div class="row">
+                <div class="col-12">
+                    <h1 class="h1 text-center" id="pageHeaderTitle">{{ departement.nom }} ({{ departement.numero }})</h1>
+                        <p>Retrouvez ces festivals dans cette région :</p>
+
+
+
+                        <div class="container">
+                            <div class="row">
+                                {% for festival in departement.festival %}
+                                    <div class="col-md-3" style="margin-bottom: 3rem;">
+                                        <img src="{{ asset('img/') }}{{ festival.photo }}" class="card-img-top "  alt="...">
+                                        <div class="card-body ">
+                                            <h4 class="card-title">{{ festival.nom }}</h4>
+                                            <p class="card-text">Description : {{ festival.description }}</p>
+                                            <h5 class="card-text">Lieu : {{ festival.lieu }}</h5>
+
+                                            <a href="{{ path('app_festival_detail_fest', {id:festival.id }) }}" class="btn btn-primary btn-sm">Voir</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+
+                    <li class="list-group-item list-group-item-dark"></li>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
